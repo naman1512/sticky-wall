@@ -55,17 +55,3 @@ app.listen(5000, () => {
     console.log(`app listening on port ${port}`)
 })
 
-// Presist user data after successful authentication
-passport.serializeUser(function (user, done) {
-    done(null, user.id);
-  });
-
-  // Retrieve user data from session.
-  passport.deserializeUser(async (id, done) => {
-    try {
-      const user = await User.findById(id);
-      done(null, user);
-    } catch (err) {
-      done(err, null);
-    }
-  });
