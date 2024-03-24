@@ -1,6 +1,7 @@
 require('dotenv').config() //importing dotenv or environment variable
 const express = require('express') //importing express
 const expressLayouts = require('express-ejs-layouts') //importing express layouts
+const methodOverride = require ('method-override')
 const connectDB = require('./server/config/db')
 const session =  require('express-session') //stores sessions in the database
 const passport = require ('passport') //authentication
@@ -17,8 +18,7 @@ app.use(session({
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI
     }),
-    //cookie: { maxAge: new Date ( Date.now() + (3600000) ) } 
-    // Date.now() - 30 * 24 * 60 * 60 * 1000
+   
   }));
 
 //passport aunthentication
@@ -28,7 +28,7 @@ app.use(passport.session())
 //accepts data through the forms and input through the website 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
-
+app.use (methodOverride("_method"))
 //dababase connect
 connectDB();
 
