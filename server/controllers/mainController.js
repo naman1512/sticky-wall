@@ -22,3 +22,23 @@ exports.about = async (req, res) => {
         }
         res.render('about', locals);
 }
+// get features
+
+exports.features = async (req, res) => {
+    
+        const locals = {
+            title: "Features - Sticky Wall",
+            description: "A notes app created in node.Js and EJS"
+        }
+        res.render('features', locals);
+}
+// get FAQ
+
+exports.faq = async (req, res) => {
+    
+        const locals = {
+            title: "FAQ - Sticky Wall",
+            description: "A notes app created in node.Js and EJS"
+        }
+        res.render('faq', locals);
+}
